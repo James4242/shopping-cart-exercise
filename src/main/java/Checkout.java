@@ -4,6 +4,8 @@ public class Checkout {
     private static final String ORANGE = "orange";
     private static final double applePrice = 0.60;
     private static final double orangePrice = 0.25;
+    private int appleAmount;
+    private int orangeAmount;
     private double totalPrice;
 
     public double calculateTotalCostOfFruit(String[] shoppingList) {
@@ -26,10 +28,18 @@ public class Checkout {
     }
 
     private void processApple() {
+        appleAmount ++;
+        if (appleAmount % 2 == 0) {
+            return;
+        }
         totalPrice += applePrice;
     }
 
     private void processOrange() {
+        orangeAmount ++;
+        if (orangeAmount % 3 == 0) {
+            return;
+        }
         totalPrice += orangePrice;
     }
 }
