@@ -41,6 +41,20 @@ public class CheckoutTest {
         checkout.calculateTotalCostOfFruit(shoppingList);
     }
 
+    @Test
+    public void shouldReceiveSecondAppleFreeForEachOnePurchased() {
+        shoppingList = new String[]{"Apple", "Apple", "Apple", "Apple"};
+
+        assertProductEquals(1.20, checkout.calculateTotalCostOfFruit(shoppingList));
+    }
+
+    @Test
+    public void shouldReceiveThirdOrangeFree() {
+        shoppingList = new String[] {"Orange", "Orange", "orange"};
+
+        assertProductEquals(0.50, checkout.calculateTotalCostOfFruit(shoppingList));
+    }
+
     private void assertProductEquals(double expectedPrice, double actualPrice) {
         assertEquals("Incorrect total price", expectedPrice, actualPrice, 0.004);
     }
