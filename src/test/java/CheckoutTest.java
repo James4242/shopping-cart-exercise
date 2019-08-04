@@ -35,6 +35,12 @@ public class CheckoutTest {
         assertProductEquals(0.50, checkout.calculateTotalCostOfFruit(shoppingList));
     }
 
+    @Test(expected = ProductUnavailableException.class)
+    public void shouldThrowExceptionWhenProductIsNotAvailable() {
+        shoppingList = new String[] {"Apple", "Peach"};
+        checkout.calculateTotalCostOfFruit(shoppingList);
+    }
+
     private void assertProductEquals(double expectedPrice, double actualPrice) {
         assertEquals("Incorrect total price", expectedPrice, actualPrice, 0.004);
     }
